@@ -1,12 +1,11 @@
+import { httpServer } from './server.js'
 import dbConnect from './db.js'
-import { server } from './server.js'
 
 dbConnect()
   .then(() => {
-    console.log('Database connected c:')
-
-    server.listen(8080, () => {
-      console.log('Server listening on port 8080')
+    console.log('Database connected')
+    httpServer.listen(8000, () => {
+      console.log('🚀 Server ready at http://localhost:8000/graphql')
     })
   })
   .catch((error) => console.log('Error: ', error))
